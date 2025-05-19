@@ -32,5 +32,4 @@ System.out.println("Current working directory: " + System.getProperty("user.dir"
 			throw new IllegalArgumentException("Missing required environment variable: " + key);
 		}
 	}
-
 }

@@ -25,6 +25,8 @@ public class Project {
     private String funFact;
     //stack
     private String stack;
+    //url
+    private String gitHubUrl;
 
     //optional imageSource
     //and imageText   
@@ -87,5 +89,13 @@ public class Project {
 
     public void setStack(String stack) {
         this.stack = stack;
+    }
+
+    public String getGitHubUrl() {
+        return this.gitHubUrl;
+    }
+
+    public void setGitHubUrl(String gitHubUrl) {
+        this.gitHubUrl = gitHubUrl;
     }
 }

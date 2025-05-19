@@ -28,4 +28,9 @@ public class ProjectController {
     public List<Project> getAllProjects() {
         return projectService.getAllProjects();
     }
+
+    @PutMapping("/{id}")
+    public Project updateProject(@PathVariable int id, @RequestBody Project project) {
+    return projectService.updateProject(id, project);
+}
 }

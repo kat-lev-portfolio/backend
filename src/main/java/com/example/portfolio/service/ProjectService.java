@@ -14,4 +14,9 @@ public class ProjectService {
     public Project createProject(Project project) {
         return projectRepository.save(project);
     }
+
+    public Project getProjectById(int id) {
+        return projectRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("No project found with id: " + id));
+    }
 }

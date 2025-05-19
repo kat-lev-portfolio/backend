@@ -16,4 +16,9 @@ public class ProjectController {
     public Project createProject(@RequestBody Project project) {
         return projectService.createProject(project);
     }
+
+    @GetMapping("/{id}")
+    public Project getProject(@PathVariable int id) {
+        return projectService.getProjectById(id);
+    }
 }

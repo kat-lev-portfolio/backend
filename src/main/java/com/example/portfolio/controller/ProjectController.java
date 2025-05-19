@@ -1,4 +1,6 @@
 package com.example.portfolio.controller;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,5 +22,10 @@ public class ProjectController {
     @GetMapping("/{id}")
     public Project getProject(@PathVariable int id) {
         return projectService.getProjectById(id);
+    }
+
+    @GetMapping
+    public List<Project> getAllProjects() {
+        return projectService.getAllProjects();
     }
 }

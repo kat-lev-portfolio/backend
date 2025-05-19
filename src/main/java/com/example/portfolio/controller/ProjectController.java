@@ -3,17 +3,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.portfolio.model.Project;
-import com.example.portfolio.repository.ProjectRepository;
+import com.example.portfolio.service.ProjectService;
 
 @RestController
 @RequestMapping("/api/projects")
 public class ProjectController {
     
     @Autowired
-    private ProjectRepository projectRepository;
+    private ProjectService projectService;
 
     @PostMapping
     public Project createProject(@RequestBody Project project) {
-        return projectRepository.save(project);
+        return projectService.createProject(project);
     }
 }

@@ -5,6 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import java.util.List;
+import jakarta.persistence.ElementCollection;
 
 @Entity
 @Table(name= "projects")
@@ -20,16 +22,18 @@ public class Project {
     //longDescription
     private String longDescription;
     //category - choice of 3
-    private String category;
+    @ElementCollection
+    private List<String> category;
     //funFact
     private String funFact;
     //stack
     private String stack;
     //url
     private String gitHubUrl;
-
-    //optional imageSource
-    //and imageText   
+    //image loc
+    private String imageSource;
+    //image description
+    private String imageDescription; 
 
     public Project() {
     }
@@ -67,11 +71,11 @@ public class Project {
         this.longDescription = longDescription;
     }
 
-    public String getCategory() {
-        return this.category;
+    public List<String> getCategory() {
+        return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(List<String> category) {
         this.category = category;
     }
 
@@ -97,5 +101,21 @@ public class Project {
 
     public void setGitHubUrl(String gitHubUrl) {
         this.gitHubUrl = gitHubUrl;
+    }
+
+    public String getImageSource() { 
+        return imageSource; 
+    }
+    
+    public void setImageSource(String imageSource) { 
+        this.imageSource = imageSource; 
+    }
+
+    public String getImageDescription() { 
+        return imageDescription; 
+    }
+    
+    public void setImageDescription(String imageDescription) { 
+        this.imageDescription = imageDescription; 
     }
 }

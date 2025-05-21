@@ -36,3 +36,4 @@ build/
 .history/
 .DS_Store
 .env
+uploads/

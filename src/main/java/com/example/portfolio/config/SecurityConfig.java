@@ -9,9 +9,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import jakarta.servlet.http.HttpServletResponse;
-
-
 @Configuration
 public class SecurityConfig {
 
@@ -28,30 +25,12 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+
             .csrf(csrf -> csrf.disable()) 
-            .authorizeHttpRequests(auth -> auth
-                // .requestMatchers("/", "/login", "/api/users", "/api/login").permitAll()
-                // .requestMatchers(HttpMethod.GET, "/api/projects/**").permitAll()
-                // .requestMatchers("/api/login", "/images/**", "/uploads/**").permitAll()
-                // .anyRequest().authenticated()
-                .requestMatchers("/uploads/**").permitAll()
-                .requestMatchers("/", "/login", "/api/users", "/api/login").permitAll()
-                .requestMatchers(HttpMethod.GET, "/api/projects/**").permitAll()
-                .requestMatchers(HttpMethod.POST, "/api/projects").authenticated()  // Or .permitAll() if public
-                .requestMatchers("/images/**").permitAll()
-                .anyRequest().authenticated()
-            )
-            .exceptionHandling(e -> 
-            e.authenticationEntryPoint((request, response, authException) -> {
-                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                response.getWriter().write("Unauthorized");
-            })
-        )
-            .formLogin(form -> form
-                .loginPage("/login") 
-                .permitAll()
-            )
-            .logout(logout -> logout.permitAll());
+                    .csrf(csrf -> csrf.disable())
+        .authorizeHttpRequests(auth -> auth.anyRequest().permitAll())
+        .formLogin(form -> form.loginPage("/login").permitAll())   
+        .logout(logout -> logout.permitAll());
 
         return http.build();
     }

@@ -29,7 +29,7 @@ cd backend
 ./mvnw spring-boot:run
 By default, the app runs on http://localhost:8080
 
-### Endpoints
+## 🖌️ Endpoints
 
 | Method | Endpoint            | Auth Required | Description            |
 | ------ | ------------------- | ------------- | ---------------------- |

@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.portfolio.dto.UserDTO.CreateUserRequest;
 import com.example.portfolio.service.UserService;
+
+import jakarta.validation.Valid;
+
 import com.example.portfolio.model.User;
 
 @RestController

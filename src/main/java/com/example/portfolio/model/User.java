@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Pattern;
 
     @Entity
     @Table(name = "users")
@@ -15,8 +16,10 @@ import jakarta.persistence.Table;
     private Long id;
 
     @Column(unique = true)
+    @Pattern(regexp = "^[a-zA-Z0-9_]{3,20}$", message = "Username must be 3-20 characters, letters, numbers or underscores only")
     private String username;
 
+    @Pattern(regexp = "^[a-zA-Z0-9!@#$%^&*()_+=-]{6,30}$", message = "Password must be 6-30 characters, no spaces")
     private String password;
 
 

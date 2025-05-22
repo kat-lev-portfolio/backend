@@ -37,3 +37,6 @@ By default, the app runs on http://localhost:8080
 | POST   | /api/projects       | ✅             | Create a new project   |
 | POST   | /api/login          | ❌             | Log in                 |
 | GET    | /uploads/{filename} | ❌             | Access uploaded images |
+
+### 📄 License
+MIT

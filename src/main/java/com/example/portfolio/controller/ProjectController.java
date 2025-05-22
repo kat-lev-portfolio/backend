@@ -14,7 +14,7 @@ import com.example.portfolio.dto.ProjectDTO;
 
 @RestController
 @RequestMapping("/api/projects")
-@CrossOrigin(origins = "http://localhost:5173")
+// @CrossOrigin(origins = "http://localhost:5173")
 public class ProjectController {
     
     @Autowired
@@ -28,12 +28,12 @@ public class ProjectController {
 @PostMapping(consumes = "multipart/form-data")
 public Project createProject(
     @RequestPart("project") String projectJson,
-    @RequestPart("imageFile") MultipartFile imageFile
+    @RequestPart("imageFile") MultipartFile imageSource
 ) {
     try {
         ObjectMapper mapper = new ObjectMapper();
         ProjectDTO dto = mapper.readValue(projectJson, ProjectDTO.class);
-        return projectService.createProjectWithImage(dto, imageFile);
+        return projectService.createProjectWithImage(dto, imageSource);
     } catch (IOException e) {
         throw new RuntimeException("Failed to parse project data", e);
     }

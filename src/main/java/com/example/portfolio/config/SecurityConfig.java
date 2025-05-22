@@ -1,6 +1,7 @@
 package com.example.portfolio.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -28,6 +29,8 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable()) 
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/", "/login", "/api/users", "/api/login").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/projects/**").permitAll()
+                .requestMatchers("/api/login", "/images/**", "/uploads/**").permitAll()
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form
